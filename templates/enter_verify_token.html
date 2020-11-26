@@ -1,0 +1,27 @@
+<!-- templates/home.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="form_div" class="container">
+
+        <form action="/verifytoken">
+
+            <label for="code">Enter the 6-digit verification code sent to you by SMS:</label><br><br>
+            <input type="number" id="code" name="code" placeholder="XXXXXX" pattern="[0-9]{6}" maxlength="6" size="6" required> <br><br>
+
+            {% comment %} Invisible! {% endcomment %}
+            <label style="display: none;" for="cellnum">Cell Number:</label>
+            <input style="display: none;" type="tel" id="cellnum" name="cellnum" value="{{ num }}" required>
+            {% comment %} End invisible! {% endcomment %}
+
+            {% comment %} <small >Format: +01 23 456 79 90</small><br><br> {% endcomment %}
+
+            <input type="submit" value="Submit">
+            
+        </form>
+    
+    </div>
+
+{% endblock content %}

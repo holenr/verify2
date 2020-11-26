@@ -1,0 +1,21 @@
+<!-- templates/home.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% comment %} {% if user.is_authenticated %} {% endcomment %}
+
+        {% for object in object_list %}
+            <div class="post-entry">
+                <h2><a href="{% url 'dashboard_detail' object.pk %}">{{ object.title }}</a></h2>
+                <p>{{ object.body }}</p>
+            </div>
+        {% endfor %}
+
+    {% comment %} {% else %}
+        <p><a href="{% url 'login' %}">Log In</a> to see your interactive report.</p>
+
+    {% endif %} {% endcomment %}
+
+{% endblock content %}

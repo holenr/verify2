@@ -1,0 +1,29 @@
+<!-- templates/home.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="form_div" class="container">
+
+        <form action="/entertoken">
+
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br><br>
+
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+
+            <label for="cellnum">Cell Number:</label><br>
+            <input type="tel" id="cellnum" name="cellnum" placeholder="+01 23 456 79 90"
+                   pattern="+[0-9]{2} [0-9]{2} [0-9]{3} [0-9]{2} [0-9]{2}" required><br>
+                   
+            <small>Format: +01 23 456 79 90</small><br><br>
+
+            <input type="submit" value="Submit">
+            
+        </form>
+    
+    </div>
+
+{% endblock content %}

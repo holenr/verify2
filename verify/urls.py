@@ -8,9 +8,9 @@ urlpatterns = [
     path('', DashboardListView.as_view(), name='home'), # access dashboards (heart of page) directly
     path('smslogin/', LoginView.as_view(), name='sms_login'), # 'login' page with form for user to enter login details
     path('entertoken/', requestToken, name='entertoken'), # page to enter verify token received by sms
-    # path('entertoken/', EnterTokenView.as_view(), name='entertoken'), # page to enter verify token received by sms
+    # path('entertoken/', EnterTokenView.as_view(), name='entertoken'), # page to enter verify token received by sms (old class based view)
     path('verifytoken/', verifyToken, name='verifytoken'), # handle verification using submitted login data of user
-    # path('verifytoken/', VerifyTokenView.as_view(), name='verifytoken'), # handle verification using submitted login data of user
+    # path('verifytoken/', VerifyTokenView.as_view(), name='verifytoken'), # handle verification using submitted login data of user (old class based view)
     
     # Practice to try Twilio 'Verify' service....
     path('sms/', send_test_sms, name='sms'),

@@ -6,34 +6,31 @@ from .models import Dashboard
 from django.shortcuts import render, redirect # new, taken from tp-pbi-embedded
 
 # From Verify API Documentation:
-from twilio.rest import Client # new
-
-# # imports from django-twilio: 
-# from twilio.twiml.messaging_response import MessagingResponse
-# from django_twilio.decorators import twilio_view
-# # include decompose in your views.py
-# from django_twilio.request import decompose
+from twilio.rest import Client # required
 
 # Roland's Twilio Account Details to use Twilio services: (send sms, emails, voicecall etc.)
+# Note: Not ideal to store here! Find a better place to store/ retrieve them (i.e. settings.py)
 TWILIO_ACCOUNT_SID = 'AC313e28cfd8f0ef11c59b56184b91dccc' #required
 TWILIO_AUTH_TOKEN = '532f80cfeb39a76c1bac46117376aa5b'    #required
     
 
 
-# Shortcut: access data in database directly without proper authentication (views below).
+# Shortcut: access data in database directly without proper authentication (see views below).
+# display a list representation of all the objects associated with the specified model in the database belonging to a user:
 class DashboardListView(ListView):
     model = Dashboard
     template_name = 'home.html'
 
-# an instance of the DashboardListView class based view to use as a function based view:
+# try to use an instance of the DashboardListView class based view as a function based view:
 # home_view = DashboardListView.as_view() # does not work...
 
 
+# display a single object from the model belonging to the user
 class DashboardDetailView(DetailView): # new
     model = Dashboard
     template_name = 'dashboard_detail.html'
 
-
+# login view
 class LoginView(TemplateView): # new
     template_name = 'enter_login_details.html'
 
